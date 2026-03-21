@@ -10,8 +10,11 @@ class Sensor:
         self.value_range = value_range
 
     def generate_value(self) -> float:
-        value = random.uniform(self.value_range[0], self.value_range[1])
-        return round(value, 2)  # округлення до 2 знаків
+        if random.random() < 0.8:  # змін на 0.8 щоб 80% були аномаліями
+            return round(random.uniform(self.value_range[0], self.value_range[1]), 2)
+        else:
+            # аномалія — значення вище норми
+            return round(self.value_range[1] * 1.5, 2)
 
     def to_payload(self) -> dict:
         return {

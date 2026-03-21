@@ -25,9 +25,9 @@ class Settings(BaseSettings):
     TELEGRAM_CHAT_ID: str = "597253503"
 
     # Anomaly detection thresholds
-    TEMPERATURE_MAX: float = 85.0
-    PRESSURE_MAX: float = 10.0
-    VIBRATION_MAX: float = 5.0
+    TEMPERATURE_MAX: float = 75.0
+    PRESSURE_MAX: float = 6.0
+    VIBRATION_MAX: float = 2.5
 
 
 settings = Settings()
