@@ -1,4 +1,5 @@
 import pandas as pd
+
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
@@ -24,4 +25,14 @@ class AnomalyService:
             }
             for r in readings
         ]
-        return pd.DataFrame(readings)
+        return pd.DataFrame(data)
+
+    async def detect_anomalies(self):
+        recent_readings = await self.get_recent_readings()
+        recent_df = self.to_dataframe(recent_readings)
+        temp = recent_df[(recent_df["sensor_type"] == "temperature") & (recent_df["value"] > settings.TEMPERATURE_MAX)]
+        pressure = recent_df[
+            (recent_df["sensor_type"] == "pressure") & (recent_df["value"] > settings.PRESSURE_MAX)]
+        vibration = recent_df[
+            (recent_df["sensor_type"] == "vibration") & (recent_df["value"] > settings.VIBRATION_MAX)]
+        return pd.concat([temp, pressure, vibration])
