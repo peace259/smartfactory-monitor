@@ -21,8 +21,8 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: list[str] = ["http://localhost:3000"]
 
     # Telegram
-    TELEGRAM_BOT_TOKEN: str = ""
-    TELEGRAM_CHAT_ID: str = ""
+    TELEGRAM_BOT_TOKEN: str = "8515000886:AAHcB6MJN8bnlxUfp3axYP2cprgzuCnfXzo"
+    TELEGRAM_CHAT_ID: str = "597253503"
 
     # Anomaly detection thresholds
     TEMPERATURE_MAX: float = 85.0
